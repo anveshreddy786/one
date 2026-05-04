@@ -1,0 +1,30 @@
+pipeline {
+    agent {
+        node 'dev'
+    }
+    tools {
+        maven 'mymaven'
+    }
+    stages {
+        stage('fetch') {
+            steps{
+                git 'https://github.com/anveshreddy786/one.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('artifact'){
+            steps{
+              nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', file: 'target/myweb-8.6.9-SNAPSHOT.war', type: 'war']], credentialsId: 'nexus-cred', groupId: 'in.javahome', nexusUrl: '98.86.181.243:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'myfirstnexusrepo', version: '8.6.9-SNAPSHOT'
+            }
+        }
+        stage('deploy') {
+            steps {
+                    deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '4d251684-5ac6-48d7-bcac-a878f1b439b6', path: '', url: 'http://18.205.3.233:8080')], contextPath: 'e-commerce', war: 'target/*.war'
+            }
+        }
+    }
+}
