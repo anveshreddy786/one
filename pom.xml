@@ -7,6 +7,12 @@
 	<version>8.6.9-SNAPSHOT</version>
 	<name>Java Home myweb</name>
 	<url>http://maven.apache.org</url>
+	 <scm>
+	    <connection>scm:git:https://github.com/anveshreddy786/one.git</connection>
+	    <developerConnection>scm:git:https://github.com/anveshreddy786/one.git</developerConnection>
+	    <url>https://github.com/anveshreddy786/one</url>
+	    <tag>HEAD</tag>
+     </scm>
 	
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
@@ -28,12 +34,6 @@
 		<repository>
   <id>mydevops-feed</id>
   <url>https://pkgs.dev.azure.com/shaikmustafa8991/myproject/_packaging/mydevops-feed/maven/v1</url>
-  <scm>
-    <connection>scm:git:https://github.com/anveshreddy786/one.git</connection>
-    <developerConnection>scm:git:https://github.com/anveshreddy786/one.git</developerConnection>
-    <url>https://github.com/anveshreddy786/one</url>
-    <tag>HEAD</tag>
-  </scm>
   <releases>
     <enabled>true</enabled>
   </releases>
